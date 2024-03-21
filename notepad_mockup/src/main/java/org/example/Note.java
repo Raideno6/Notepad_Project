@@ -1,7 +1,4 @@
-package org.example;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+package main.java.org.example;
 
 public class Note {
     private String author;
@@ -51,6 +48,6 @@ public class Note {
     }
 
     public void printNote(){
-        System.out.printf("%15s, %15s, %15s ,%15s ,%15s ,%s", noteName, "\nBy: " + author, date, subtitle,"\n===========================", body);
+        System.out.printf("%s\n %s %s \n\n%15s \n%s \n%s\n\n", " Title: " + noteName, "By: " + author, "On: " + date, subtitle,"=================================", body);
     }
 }
