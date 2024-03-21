@@ -1,4 +1,4 @@
-package main.java.org.example;
+package org.example;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.*;
@@ -8,7 +8,7 @@ import java.util.*;
 public class TextMockup {
     public static void main(String[] args) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        File dir = new File("notepad_mockup/note");
+        File dir = new File("note");
         dir.mkdirs();
         Scanner myScanner = new Scanner(System.in);
         while (true){
