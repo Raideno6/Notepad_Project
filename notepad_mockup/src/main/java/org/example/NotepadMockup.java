@@ -5,7 +5,7 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class TextMockup {
+public class NotepadMockup {
     public static void main(String[] args) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         File dir = new File("note");
