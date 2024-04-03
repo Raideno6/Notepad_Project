@@ -1,25 +1,13 @@
 package org.example;
+import javax.print.Doc;
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.Document;
 import java.awt.*;
 import java.io.IOException;
 
 public class NotepadGUI {
-       // JTextField
-    static JTextField t;
-
-    // JFrame
-    static JFrame f;
-
-    // JButton
-    static JButton b;
-
-    // label to display text
-    static JLabel l;
-
-    // default constructor
-    NotepadGUI()
-    {
-    }
     public static void main(String[] args) throws IOException {
 
 //        CardLayoutClass cardLayoutFrame = new CardLayoutClass();
@@ -42,19 +30,42 @@ public class NotepadGUI {
         int mid = width/2;
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JPanel panel = new JPanel();
+
+        DocumentListener myDoc = new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+
+            }
+        };
+        JTextField nameField = new JTextField("Name");
+        JTextField author = new JTextField("Author");
+        JTextField subtitle = new JTextField("Subtitle");
+        JTextArea textBox = new JTextArea("");
+        nameField.setBounds(mid - (400 / 2), 25, 400, 30);
+        author.setBounds(mid - (400 / 2), 65, 400, 30);
+        subtitle.setBounds(mid - (400 / 2), 135, 400, 30);
+        textBox.setBounds(mid - (400 / 2), 176, 400, 400);
+        textBox.setWrapStyleWord(true);
+        frame.add(nameField);
+        frame.add(author);
+        frame.add(subtitle);
+        frame.add(textBox);
 
 
-        JTextField nameField = new JTextField();
-        JTextField author = new JTextField();
-        JTextField subtitle = new JTextField();
-        JTextField textBox = new JTextField();
-        panel.add(nameField);
 
-
-        frame.add(panel);
         frame.setSize(width,height);
-        frame.show();
+        frame.setLayout(null);
+        frame.setVisible(true);
 
     }
 }
