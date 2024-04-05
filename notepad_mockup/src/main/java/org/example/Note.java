@@ -3,6 +3,7 @@ package org.example;
 import lombok.Getter;
 import lombok.Setter;
 
+
 public class Note {
     @Getter
     @Setter
@@ -24,6 +25,9 @@ public class Note {
         this.noteName = noteName;
     }
 
+    /**
+     * Prints note out in correct format
+     */
     public void printNote() {
         System.out.printf("%s\n %s %s \n\n%15s \n%s \n%s\n\n", " Title: " + noteName, "By: " + author, "On: " + date, subtitle, "=================================", body);
     }
