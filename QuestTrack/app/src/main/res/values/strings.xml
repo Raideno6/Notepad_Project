@@ -42,8 +42,4 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
-    <string name="quest_tracker">Quest Tracker</string>
-    <string name="new_quest">New Quest</string>
-    <string name="load_quest">Load Quest</string>
-    <string name="quest_name">Quest Name</string>
 </resources>

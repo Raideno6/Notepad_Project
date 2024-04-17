@@ -1,7 +1,6 @@
 package com.example.questtrack;
 
 import android.os.Bundle;
-import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +24,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    Button logBtn = (Button)findViewById(R.id.newButton);
-    
+    String newButton = "New Quest";
 }
