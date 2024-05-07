@@ -8,17 +8,17 @@
     tools:context=".LogView">
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/noteName"
         android:layout_width="387dp"
         android:layout_height="39dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Name"
+        android:text="@string/name"
         tools:layout_editor_absoluteX="10dp"
         tools:layout_editor_absoluteY="18dp" />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/noteBody"
         android:layout_width="382dp"
         android:layout_height="642dp"
         android:layout_marginStart="14dp"
@@ -28,7 +28,7 @@
         android:inputType="text"
         android:isScrollContainer="false"
         android:keepScreenOn="false"
-        android:text="Main Text'"
+        android:text="@string/main_text"
         android:textAlignment="viewStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

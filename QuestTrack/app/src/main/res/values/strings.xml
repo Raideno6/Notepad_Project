@@ -45,4 +45,6 @@
     <string name="new_quest">New Quest</string>
     <string name="quest_tracker">Quest Tracker</string>
     <string name="load_quest">Load Quest</string>
+    <string name="name">Name</string>
+    <string name="main_text">Main Text\'</string>
 </resources>

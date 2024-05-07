@@ -1,6 +1,7 @@
 package com.example.questtrack;
 
 import android.os.Bundle;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,15 +11,22 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class LogView extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_log_view);
+
+        EditText editText = findViewById(R.id.noteName);
+        editText.setText("dsfdsf");
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.logScreen), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
     }
 }
