@@ -31,4 +31,7 @@ public class Note {
     public void printNote() {
         System.out.printf("%s\n %s %s \n\n%15s \n%s \n%s\n\n", " Title: " + noteName, "By: " + author, "On: " + date, subtitle, "=================================", body);
     }
+
+    public void setDate(String date) {
+    }
 }

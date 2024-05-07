@@ -1,6 +1,7 @@
 package com.example.questtrack;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -10,9 +11,24 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class DataHandler {
+
+    public static void SaveNotes(String title, String body){
+        Note temp = new Note(title);
+        temp.setBody(body);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            temp.setDate(LocalDateTime.now().toString());
+        }
+
+        File directory;
+
+        if (filename.isEmpty()) {
+            directory = getFilesDir;
+        }
+    }
 
     public static Note convertJsonToObject(Context context, int rawID) {
 
