@@ -3,7 +3,7 @@ package com.example.questtrack;
 import android.os.Bundle;
 import android.widget.EditText;
 
-import androidx.activity.EdgeToEdge;
+// androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -15,7 +15,7 @@ public class LogView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        //EdgeToEdge.enable(this);
         setContentView(R.layout.activity_log_view);
 
         EditText editText = findViewById(R.id.noteName);

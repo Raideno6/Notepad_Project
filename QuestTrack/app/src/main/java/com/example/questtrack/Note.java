@@ -1,25 +1,19 @@
 package com.example.questtrack;
 
 
-import lombok.Getter;
-import lombok.Setter;
+
 
 
 public class Note {
-    @Getter
-    @Setter
+
     private String author;
-    @Getter
-    @Setter
+
     private String date;
-    @Getter
-    @Setter
+
     private String noteName;
-    @Getter
-    @Setter
+
     private String body;
-    @Getter
-    @Setter
+
     private String subtitle;
 
     public Note(String noteName) {
