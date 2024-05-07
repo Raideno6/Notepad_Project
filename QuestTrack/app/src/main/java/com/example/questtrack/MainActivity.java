@@ -32,7 +32,11 @@ public class MainActivity extends AppCompatActivity {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                DataHandler.getAllNotes();
+                try {
+                    DataHandler.getAllNotes(MainActivity.this);
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }

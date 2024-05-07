@@ -14,10 +14,9 @@ import java.util.ArrayList;
 
 public class DataHandler {
 
+    public static Note convertJsonToObject(Context context, int rawID) {
 
-    public static Note convertJsonToObject(Context context) {
-
-        InputStream inputStream = context.getResources().openRawResource(R.raw.note);
+        InputStream inputStream = context.getResources().openRawResource(rawID);
         String jsonString = "";
         try {
             byte[] data = new byte[inputStream.available()];
@@ -32,12 +31,13 @@ public class DataHandler {
         return new Gson().fromJson(jsonString, new TypeToken<Note>(){}.getType());
     }
 
-    public static ArrayList<Note> getAllNotes(){
+    public static ArrayList<Note> getAllNotes(Context context) throws IllegalAccessException {
         ArrayList<Note> test = new ArrayList<>();
-        test.add(new Note("Hello!"));
         Field[] fields = R.raw.class.getFields();
         for(int i=0; i < fields.length; i++){
             Log.i("Raw Asset ", fields[i].getName());
+            int resourceID=fields[i].getInt(fields[i]);
+            test.add(convertJsonToObject(context, resourceID));
         }
         return test;
     }
