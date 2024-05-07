@@ -41,6 +41,7 @@ dependencies {
     implementation libs.navigation.fragment.v240
     implementation libs.navigation.ui.v240
     implementation libs.activity.v140
+    implementation libs.gson
     testImplementation libs.junit
     androidTestImplementation libs.junit.v113
     androidTestImplementation libs.espresso.core.v340
