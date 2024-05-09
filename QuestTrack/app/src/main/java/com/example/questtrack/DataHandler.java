@@ -93,6 +93,10 @@ public class DataHandler {
         return noteArrayList;
     }
 
+    public Note getNote(String name) {
+        return null;
+    }
+
     public Note getActiveNote(){
         if (this.activeNote != null){
             return this.activeNote;
