@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     rayNote.setBody("hello this is a note by raymond!");
                     DataHandler.SaveNote(MainActivity.this, rayNote);
                     Note quinnNote = new Note("Quinn Haywood");
-                    rayNote.setBody("hello this is a note by Quinton!");
+                    quinnNote.setBody("hello this is a note by Quinton!");
                     DataHandler.SaveNote(MainActivity.this, quinnNote);
                     ArrayList<Note> noteArrayList = DataHandler.getListOfNotes(MainActivity.this);
                     for (Note note:
