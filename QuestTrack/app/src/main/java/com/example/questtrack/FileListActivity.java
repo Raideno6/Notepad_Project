@@ -1,6 +1,7 @@
 package com.example.questtrack;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -32,21 +33,27 @@ public class FileListActivity extends AppCompatActivity {
             public void run() {
                 try {
                     notes = DataHandler.getListOfNotes(FileListActivity.this);
+
+                    for (Note note: notes) {
+                        Log.i("Note_Data_2", note.getNoteName() + " " + note.getBody());
+                    }
+
+                    if (notes == null || notes.isEmpty()) {
+                        noFilesText.setVisibility(View.VISIBLE);
+                        return;
+                    }
+
+                    noFilesText.setVisibility(View.INVISIBLE);
+
+                    recyclerView.setLayoutManager(new LinearLayoutManager(FileListActivity.this));
+                    recyclerView.setAdapter(new MyAdapter(getApplicationContext(), notes));
+
                 } catch (IllegalAccessException | FileNotFoundException e) {
                     throw new RuntimeException(e);
                 }
             }
         });
 
-        if (notes == null || notes.isEmpty()) {
-            noFilesText.setVisibility(View.VISIBLE);
-            return;
-        }
-
-        noFilesText.setVisibility(View.INVISIBLE);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyAdapter(getApplicationContext(), notes));
     }
 
 }
