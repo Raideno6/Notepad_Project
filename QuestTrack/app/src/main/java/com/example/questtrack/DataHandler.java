@@ -20,6 +20,7 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class DataHandler {
 
@@ -93,8 +94,15 @@ public class DataHandler {
         return noteArrayList;
     }
 
-    public Note getNote(String name) {
-        return null;
+    public Optional<Note> getNote(String name, Context context) throws FileNotFoundException, IllegalAccessException {
+        ArrayList<Note> listOfNotes = getListOfNotes(context);
+        for (Note note:
+             listOfNotes) {
+            if (note.getNoteName().equals(name)){
+                return Optional.of(note);
+            }
+        }
+        return Optional.empty();
     }
 
     public Note getActiveNote(){
