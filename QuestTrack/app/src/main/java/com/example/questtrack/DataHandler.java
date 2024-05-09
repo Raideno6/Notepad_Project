@@ -5,24 +5,18 @@ import android.os.Build;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -30,6 +24,9 @@ import java.util.ArrayList;
 public class DataHandler {
 
     public static void SaveNote(Context context, Note note) throws IOException {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            note.setDate(String.valueOf(LocalDateTime.now()));
+        }
         File directory = new File("data/data/com.example.questtrack/files/Notes");
         File file = new File(directory, note.getNoteName());
         String fileContent = new Gson().toJson(note);
@@ -84,12 +81,12 @@ public class DataHandler {
             JsonObject json = null;
             try {
                 json = JsonParser.parseString(contents).getAsJsonObject();
+                Note note = gson.fromJson(json, Note.class);
+                noteArrayList.add(note);
             } catch (Exception e) {
                 Log.i("Error", String.valueOf(e));
-                continue;
             }
-            Note note = gson.fromJson(json, Note.class);
-            noteArrayList.add(note);
+
         }
         return noteArrayList;
     }
