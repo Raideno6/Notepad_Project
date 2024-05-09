@@ -45,14 +45,15 @@ public class FileListActivity extends AppCompatActivity {
 
                     noFilesText.setVisibility(View.INVISIBLE);
 
-                    recyclerView.setLayoutManager(new LinearLayoutManager(FileListActivity.this));
-                    recyclerView.setAdapter(new MyAdapter(getApplicationContext(), notes));
 
                 } catch (IllegalAccessException | FileNotFoundException e) {
                     throw new RuntimeException(e);
                 }
             }
         });
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(FileListActivity.this));
+        recyclerView.setAdapter(new MyAdapter(getApplicationContext(), notes));
 
     }
 
