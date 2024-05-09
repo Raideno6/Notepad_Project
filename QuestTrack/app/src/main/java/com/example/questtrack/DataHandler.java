@@ -7,17 +7,23 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Field;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -51,16 +57,34 @@ public class DataHandler {
         return new Gson().fromJson(jsonString, new TypeToken<Note>(){}.getType());
     }
 
-    public static ArrayList<Note> getAllNotes(Context context) throws IllegalAccessException {
-        String[] files = context.fileList();
-
-        ArrayList<Note> test = new ArrayList<>();
-        Field[] fields = R.raw.class.getFields();
-        for(int i=0; i < fields.length; i++){
-            Log.i("Raw Asset ", fields[i].getName());
-            int resourceID=fields[i].getInt(fields[i]);
-            test.add(convertJsonToObject(context, resourceID));
+    public static ArrayList<Note> getListOfNotes(Context context) throws IllegalAccessException, FileNotFoundException {
+        ArrayList<Note> noteArrayList = new ArrayList<>();
+        InputStream myInputStream;
+        Gson gson = new Gson();
+        for (String file:
+             context.fileList()) {
+            File noteToBe = new File(context.getFilesDir(), file);
+            FileInputStream fis = context.openFileInput(noteToBe.getName());
+            InputStreamReader inputStreamReader =
+                    new InputStreamReader(fis, StandardCharsets.UTF_8);
+            StringBuilder stringBuilder = new StringBuilder();
+            String contents;
+            try (BufferedReader reader = new BufferedReader(inputStreamReader)) {
+                String line = reader.readLine();
+                while (line != null) {
+                    stringBuilder.append(line).append('\n');
+                    line = reader.readLine();
+                }
+            } catch (IOException e) {
+                // Error occurred when opening raw file for reading.
+            } finally {
+                contents = stringBuilder.toString();
+            }
+            Log.i("File_data", contents);
+            JsonObject json = JsonParser.parseString(contents).getAsJsonObject();
+            Note note = gson.fromJson(json, Note.class);
+            noteArrayList.add(note);
         }
-        return test;
+        return noteArrayList;
     }
 }

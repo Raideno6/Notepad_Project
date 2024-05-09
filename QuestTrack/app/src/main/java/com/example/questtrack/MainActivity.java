@@ -2,12 +2,15 @@ package com.example.questtrack;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -34,10 +37,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    Note note = new Note("Hello");
-                    note.setBody("Hi!");
-                    DataHandler.SaveNote(MainActivity.this, note);
-                } catch (IOException e) {
+                    ArrayList<Note> noteArrayList = DataHandler.getListOfNotes(MainActivity.this);
+                    for (Note note:
+                         noteArrayList) {
+                        Log.i("Note", note.getNoteName() + " " + note.getBody());
+                    }
+                } catch (IllegalAccessException | FileNotFoundException e) {
                     throw new RuntimeException(e);
                 }
             }
