@@ -26,7 +26,17 @@ public class MainActivity extends AppCompatActivity {
         logBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this, LogView.class);
+                Intent intent = new Intent(MainActivity.this, LogView.class);
+                startActivity(intent);
+            }
+        });
+
+        Button loadBtn = findViewById(R.id.loadButton);
+
+        loadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FileListActivity.class);
                 startActivity(intent);
             }
         });
