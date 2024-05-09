@@ -23,6 +23,8 @@ import java.util.ArrayList;
 
 public class DataHandler {
 
+    public Note activeNote = null;
+
     public static void SaveNote(Context context, Note note) throws IOException {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             note.setDate(String.valueOf(LocalDateTime.now()));
@@ -89,5 +91,16 @@ public class DataHandler {
 
         }
         return noteArrayList;
+    }
+
+    public Note getActiveNote(){
+        if (this.activeNote != null){
+            return this.activeNote;
+        }
+        return null;
+    }
+
+    public void setActiveNote(Note activeNote){
+        this.activeNote = activeNote;
     }
 }
