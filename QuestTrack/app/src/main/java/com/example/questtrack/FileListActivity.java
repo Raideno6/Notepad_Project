@@ -29,7 +29,11 @@ public class FileListActivity extends AppCompatActivity {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                notes = DataHandler.getAllNotes();
+                try {
+                    notes = DataHandler.getAllNotes(FileListActivity.this);
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
