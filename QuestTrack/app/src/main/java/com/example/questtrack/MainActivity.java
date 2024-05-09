@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     ArrayList<Note> noteArrayList = DataHandler.getListOfNotes(MainActivity.this);
                     for (Note note:
                          noteArrayList) {
-                        Log.i("Note", note.getNoteName() + " " + note.getBody());
+                        Log.i("Note_Data", note.getNoteName() + " " + note.getBody());
                     }
                 } catch (IllegalAccessException | FileNotFoundException e) {
                     throw new RuntimeException(e);
