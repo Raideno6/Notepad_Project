@@ -7,6 +7,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -33,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    DataHandler.getAllNotes(MainActivity.this);
-                } catch (IllegalAccessException e) {
+                    Note note = new Note("Hello");
+                    note.setBody("Hi!");
+                    DataHandler.SaveNote(MainActivity.this, note);
+                } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
