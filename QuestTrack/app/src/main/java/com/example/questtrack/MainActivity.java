@@ -47,12 +47,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
+                    Note rayNote = new Note("Raymond Spitz");
+                    rayNote.setBody("hello this is a note by raymond!");
+                    DataHandler.SaveNote(MainActivity.this, rayNote);
+                    Note quinnNote = new Note("Quinn Haywood");
+                    rayNote.setBody("hello this is a note by Quinton!");
+                    DataHandler.SaveNote(MainActivity.this, quinnNote);
                     ArrayList<Note> noteArrayList = DataHandler.getListOfNotes(MainActivity.this);
                     for (Note note:
                          noteArrayList) {
                         Log.i("Note_Data", note.getNoteName() + " " + note.getBody());
                     }
-                } catch (IllegalAccessException | FileNotFoundException e) {
+                } catch (IllegalAccessException | IOException e) {
                     throw new RuntimeException(e);
                 }
             }
