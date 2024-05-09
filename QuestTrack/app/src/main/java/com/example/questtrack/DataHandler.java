@@ -81,7 +81,13 @@ public class DataHandler {
                 contents = stringBuilder.toString();
             }
             Log.i("File_data", contents);
-            JsonObject json = JsonParser.parseString(contents).getAsJsonObject();
+            JsonObject json = null;
+            try {
+                json = JsonParser.parseString(contents).getAsJsonObject();
+            } catch (Exception e) {
+                Log.i("Error", String.valueOf(e));
+                continue;
+            }
             Note note = gson.fromJson(json, Note.class);
             noteArrayList.add(note);
         }
