@@ -16,6 +16,8 @@
             android:name=".LogView"
             android:exported="false" />
         <activity
+            android:name=".FileListActivity"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
