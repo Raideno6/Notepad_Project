@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -32,10 +33,21 @@ public class MainActivity extends AppCompatActivity {
 
         loadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
+<<<<<<< HEAD
             public void onClick(View v) {
                 //permission allowed
                 Intent intent = new Intent(MainActivity.this, FileListActivity.class);
                 startActivity(intent);
+=======
+            public void run() {
+                try {
+                    Note note = new Note("Hello");
+                    note.setBody("Hi!");
+                    DataHandler.SaveNote(MainActivity.this, note);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+>>>>>>> 825b64b732bedb14e09895d31651fb23278aa716
             }
         });
 

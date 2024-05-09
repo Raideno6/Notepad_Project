@@ -24,7 +24,7 @@ import java.util.ArrayList;
 public class DataHandler {
 
     public static void SaveNote(Context context, Note note) throws IOException {
-        File directory = new File("/data/data/com.example.questtrack/files/Notes");
+        File directory = new File("data/data/com.example.questtrack/files/Notes");
         File file = new File(directory, note.getNoteName());
         String fileContent = new Gson().toJson(note);
         byte[] byteArrray = fileContent.getBytes();
