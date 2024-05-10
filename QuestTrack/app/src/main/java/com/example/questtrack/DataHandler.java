@@ -94,15 +94,15 @@ public class DataHandler {
         return noteArrayList;
     }
 
-    public Optional<Note> getNote(String name, Context context) throws FileNotFoundException, IllegalAccessException {
+    public static Note getNote(String name, Context context) throws FileNotFoundException, IllegalAccessException {
         ArrayList<Note> listOfNotes = getListOfNotes(context);
         for (Note note:
              listOfNotes) {
             if (note.getNoteName().equals(name)){
-                return Optional.of(note);
+                return note;
             }
         }
-        return Optional.empty();
+        return null;
     }
 
     public Note getActiveNote(){
