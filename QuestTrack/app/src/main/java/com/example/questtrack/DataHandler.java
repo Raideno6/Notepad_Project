@@ -17,6 +17,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -30,13 +32,24 @@ public class DataHandler {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             note.setDate(String.valueOf(LocalDateTime.now()));
         }
-        File directory = new File("data/data/com.example.questtrack/files/Notes");
-        File file = new File(directory, note.getNoteName());
-        String fileContent = new Gson().toJson(note);
-        byte[] byteArrray = fileContent.getBytes();
-        try (FileOutputStream fos = context.openFileOutput(file.getName(), Context.MODE_PRIVATE)) {
-            fos.write(byteArrray);
+        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+        String fileName = note.getNoteName() + ".txt";
+        String filePath = baseDir + File.separator + fileName;
+        File dir = new File(baseDir);
+        if (!dir.exists()) {
+            dir.mkdirs();
         }
+        File file = new File(baseDir, fileName);
+        String fileContent = new Gson().toJson(note);
+        FileOutputStream FOut =  context.openFileOutput(fileName, Context.MODE_PRIVATE);
+        FOut.write(fileContent.getBytes());
+        FOut.flush();
+        FOut.close();
+//        FileOutputStream fileout= context.openFileOutput(note.getNoteName() + ".txt", Context.MODE_PRIVATE);
+//        OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
+//        outputWriter.write(fileContent);
+//        outputWriter.close();
+
     }
 
 

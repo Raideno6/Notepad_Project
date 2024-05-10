@@ -11,18 +11,25 @@
         android:id="@+id/noteName"
         android:layout_width="387dp"
         android:layout_height="39dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="5dp"
         android:ems="10"
         android:inputType="text"
         android:text="@string/name"
-        tools:layout_editor_absoluteX="10dp"
-        tools:layout_editor_absoluteY="18dp" />
+        app:layout_constraintBottom_toTopOf="@+id/noteBody"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/noteBody"
         android:layout_width="382dp"
         android:layout_height="642dp"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="15dp"
         android:layout_marginBottom="27dp"
         android:ems="10"
         android:inputType="text"
@@ -31,7 +38,9 @@
         android:text="@string/main_text"
         android:textAlignment="viewStart"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noteName" />
 
     <Button
         android:layout_width="wrap_content"
