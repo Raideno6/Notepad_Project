@@ -44,6 +44,8 @@ public class FileListActivity extends AppCompatActivity {
                     }
 
                     noFilesText.setVisibility(View.INVISIBLE);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(FileListActivity.this));
+                    recyclerView.setAdapter(new MyAdapter(getApplicationContext(), notes));
 
 
                 } catch (IllegalAccessException | FileNotFoundException e) {
@@ -51,9 +53,6 @@ public class FileListActivity extends AppCompatActivity {
                 }
             }
         });
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(FileListActivity.this));
-        recyclerView.setAdapter(new MyAdapter(getApplicationContext(), notes));
 
     }
 

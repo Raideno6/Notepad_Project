@@ -23,22 +23,16 @@ public class MainActivity extends AppCompatActivity {
 
         Button logBtn = findViewById(R.id.newButton);
 
-        logBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LogView.class);
-                startActivity(intent);
-            }
+        logBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, LogView.class);
+            startActivity(intent);
         });
 
         Button loadBtn = findViewById(R.id.loadButton);
 
-        loadBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, FileListActivity.class);
-                startActivity(intent);
-            }
+        loadBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, FileListActivity.class);
+            startActivity(intent);
         });
 
         ExecutorService executor = Executors.newSingleThreadExecutor();

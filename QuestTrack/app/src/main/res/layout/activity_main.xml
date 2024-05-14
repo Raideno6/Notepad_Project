@@ -23,7 +23,7 @@
     <Button
         android:id="@+id/newButton"
         style="@style/mainButton"
-        android:layout_width="276dp"
+        android:layout_width="match_parent"
         android:layout_height="106dp"
         android:text="@string/new_quest"
         android:textIsSelectable="true"
@@ -34,7 +34,7 @@
 
     <Button
         android:id="@+id/loadButton"
-        android:layout_width="275dp"
+        android:layout_width="match_parent"
         android:layout_height="106dp"
         android:layout_marginStart="68dp"
         android:layout_marginTop="89dp"

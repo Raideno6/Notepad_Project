@@ -1,8 +1,19 @@
 package com.example.questtrack;
 
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
+import android.provider.Settings;
 import android.util.Log;
+import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -28,23 +39,25 @@ public class DataHandler {
 
     public Note activeNote = null;
 
+
     public static void SaveNote(Context context, Note note) throws IOException {
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             note.setDate(String.valueOf(LocalDateTime.now()));
         }
         String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
         String fileName = note.getNoteName() + ".txt";
-        String filePath = baseDir + File.separator + fileName;
-        File dir = new File(baseDir);
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-        File file = new File(baseDir, fileName);
+        File directory = context.getFilesDir();
+        File file = new File (directory, fileName);
+
         String fileContent = new Gson().toJson(note);
         FileOutputStream FOut =  context.openFileOutput(fileName, Context.MODE_PRIVATE);
         FOut.write(fileContent.getBytes());
+
         FOut.flush();
         FOut.close();
+
 //        FileOutputStream fileout= context.openFileOutput(note.getNoteName() + ".txt", Context.MODE_PRIVATE);
 //        OutputStreamWriter outputWriter=new OutputStreamWriter(fileout);
 //        outputWriter.write(fileContent);

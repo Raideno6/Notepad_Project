@@ -1,10 +1,15 @@
 package com.example.questtrack;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 // androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -54,6 +59,15 @@ public class LogView extends AppCompatActivity {
                     tempNote.setBody(bodyField.getText().toString());
                     try {
                         DataHandler.SaveNote(LogView.this, tempNote);
+                        CharSequence text = "Saved!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(LogView.this, text, duration);
+                        View view = toast.getView();
+                        view.setBackgroundResource(R.drawable.custom_background);
+                        TextView textView= (TextView) view.findViewById(android.R.id.message);
+                        /*Here you can do anything with above textview like text.setTextColor(Color.parseColor("#000000"));*/
+                        textView.setTextColor(Color.parseColor("#FFbca7ec"));
+                        toast.show();
                         Intent intent = new Intent(LogView.this, MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
