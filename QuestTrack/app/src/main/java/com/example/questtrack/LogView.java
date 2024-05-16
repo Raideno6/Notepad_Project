@@ -45,7 +45,9 @@ public class LogView extends AppCompatActivity {
                     currentNote = note;
                 }
                 nameField.setText(currentNote.getNoteName());
-                bodyField.setText(currentNote.getBody());
+               if (currentNote.getBody() != null && !currentNote.getBody().isEmpty()) {
+                    bodyField.setText(currentNote.getBody());
+               }
             } catch (FileNotFoundException | IllegalAccessException e) {
                 throw new RuntimeException(e);
             }

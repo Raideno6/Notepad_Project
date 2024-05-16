@@ -46,9 +46,10 @@
     <string name="quest_tracker">Quest Tracker</string>
     <string name="load_quest">Load Quest</string>
     <string name="name">Name</string>
-    <string name="main_text">Main Text\'</string>
+    <string name="main_text">write note here</string>
     <string name="no_files_found">NO FILES FOUND</string>
     <string name="documents">Documents</string>
     <string name="save">save</string>
     <string name="abc">ABC</string>
+    <string name="write_note_here">write note here</string>
 </resources>
