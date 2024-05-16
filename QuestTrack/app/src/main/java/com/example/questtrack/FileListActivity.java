@@ -34,7 +34,7 @@ public class FileListActivity extends AppCompatActivity {
                 try {
                     notes = DataHandler.getListOfNotes(FileListActivity.this);
 
-                    for (Note note: notes) {
+                    for (Note note : notes) {
                         Log.i("Note_Data_2", note.getNoteName() + " " + note.getBody());
                     }
 

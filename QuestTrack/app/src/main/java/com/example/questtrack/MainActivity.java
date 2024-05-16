@@ -3,12 +3,10 @@ package com.example.questtrack;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
@@ -48,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
                     quinnNote.setBody("hello this is a note by Quinton!");
                     DataHandler.SaveNote(MainActivity.this, quinnNote);
                     ArrayList<Note> noteArrayList = DataHandler.getListOfNotes(MainActivity.this);
-                    for (Note note:
-                         noteArrayList) {
+                    for (Note note :
+                            noteArrayList) {
                         Log.i("Note_Data", note.getNoteName() + " " + note.getBody());
                     }
                 } catch (IllegalAccessException | IOException e) {

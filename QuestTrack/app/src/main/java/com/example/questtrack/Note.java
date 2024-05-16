@@ -10,7 +10,6 @@ public class Note {
     private String body;
 
 
-
     public Note(String noteName) {
         this.noteName = noteName;
     }

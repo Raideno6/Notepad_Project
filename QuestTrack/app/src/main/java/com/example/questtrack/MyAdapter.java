@@ -1,7 +1,5 @@
 package com.example.questtrack;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -14,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -26,7 +23,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public MyAdapter(Context context, ArrayList<Note> notes) {
         this.context = context;
         this.notes = notes;
-        for (Note note: notes) {
+        for (Note note : notes) {
             Log.i("Note_Data_3", note.getNoteName() + " " + note.getBody());
         }
     }
