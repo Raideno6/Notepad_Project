@@ -9,17 +9,17 @@
 
     <EditText
         android:id="@+id/noteName"
-        android:layout_height="match_parent"
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
         android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="14dp"
-        android:ems="10"
         android:inputType="text"
         android:text="@string/name"
         app:layout_constraintBottom_toTopOf="@+id/noteBody"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"  />
 
     <EditText
         android:id="@+id/noteBody"
